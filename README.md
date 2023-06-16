@@ -1,11 +1,11 @@
 # My Rust Data-Structure Implementation
 
 - [X] Linked List
-    - [X] Append
-    - [X] Traverse
-    - [X] Traverse with callback function
-    - [ ] Delete
-    - [ ] Sort
+    - [X] append
+    - [X] traverse with a callback function
+    - [ ] remove
+    - [ ] iter
+    - [ ] sort
 - [ ] Doubly Linked List
 - [ ] Binary Search Tree
 - [ ] B Tree

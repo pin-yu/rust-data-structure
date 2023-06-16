@@ -28,24 +28,47 @@ where
         cur.next = Some(Box::new(Node { val, next: None }));
     }
 
-    // TODO: pass a callback function that can do something for each node
-    pub fn traverse(&self) {
+    pub fn traverse(&self, callback: fn(&T)) {
         let mut cur = match self.head {
             Some(ref head) => {
-                println!("{}", head.val);
+                callback(&head.val);
                 head
             }
             None => return,
         };
 
         while let Some(ref next) = cur.next {
-            println!("{}", next.val);
+            callback(&next.val);
             cur = next;
         }
     }
 }
 
-struct Node<T> {
+pub struct Node<T> {
     val: T,
     next: Option<Box<Node<T>>>,
+}
+
+fn main() {
+    // let mut my_list = List::<i32>::new();
+    // my_list.append(5);
+    // my_list.append(10);
+    // my_list.append(15);
+
+    // my_list.traverse(|val| {println!("{}", *val);})
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_linked_list() {
+        let mut my_list = List::<i32>::new();
+        
+        my_list.append(5);
+        my_list.append(10);
+        my_list.append(15);
+
+        my_list.traverse(|val| {println!("{}", *val);})
+    }
 }
